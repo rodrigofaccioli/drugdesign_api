@@ -21,8 +21,7 @@ class PrepareLibrary(Resource):
     def post(self, name):
 
         data = PrepareLibrary.parser.parse_args()
-        command = "cd /home/faccioli/Execute/teste_webService/virtual_screening && "
-        command += "/home/faccioli/Programs/spark-1.4.1-bin-hadoop2.4/bin/spark-submit /home/faccioli/workspace/drugdesign/virtualscreening/vina/spark/prepare_ligand.py "
+        command = "/home/faccioli/Programs/spark-1.4.1-bin-hadoop2.4/bin/spark-submit /home/faccioli/workspace/drugdesign/virtualscreening/vina/spark/prepare_ligand.py "
         print(command)
         run_command(command)
         library = {'name': name}
