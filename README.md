@@ -2,8 +2,10 @@
 It is API for drugdesign project
 
 # How to start
-cd drugdesign_api/src
-source venv/bin/activate
+$ cd drugdesign_api/
+$ source venv/bin/activate
+$ cd test/api/virtual_screening
+$ python ../../../src/vs_app.py 
 
 # How to create virtualenv
 virtualenv venv --python=python2.7
