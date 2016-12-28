@@ -1,7 +1,5 @@
-from subprocess import Popen, PIPE
+import os
 
 
 def run_command(command=None):
-
-    process = Popen(command,shell=True, stdout=PIPE, stderr=PIPE)
-    stdout, stderr = process.communicate()
+    os.system(command)
