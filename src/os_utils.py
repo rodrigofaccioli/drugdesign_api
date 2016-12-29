@@ -1,7 +1,7 @@
 import os
 
 def run_command(command=None):
-    print command    
+    print command
     if command == None:
         raise("command is empty")
     os.system(command)
@@ -24,3 +24,9 @@ def join_2_commands_to_run(command_1, command_2):
     command += " && "
     command += command_2
     return command
+
+def check_diretory_exists(dir_2_search):
+    return os.path.exists(dir_2_search)
+
+def join_directory(dir1, dir2):
+    return os.path.join(dir1, dir2)
