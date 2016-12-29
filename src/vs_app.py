@@ -127,9 +127,19 @@ class VirtualScreeningAnalysis(Resource):
         required=True,
         help="This field cannot be left blank!"
     )
+    parser.add_argument('probe',
+        type=float,
+        required=True,
+        help="This field cannot be left blank!"
+    )
+    parser.add_argument('ndots',
+        type=int,
+        required=True,
+        help="This field cannot be left blank!"
+    )
 
 #    @jwt_required()
-    def post(self, vsname):
+    def post(self, vsname, probe, ndots):
         data = VirtualScreeningAnalysis.parser.parse_args()
         # Dictionary that contains all mensagens
         mens_res_vs_ana = {}
@@ -177,13 +187,25 @@ class VirtualScreeningAnalysis(Resource):
             command = join_2_commands_to_run(chdir, spark_command)
             run_command(command)
             mens_res_vs_ana['ligand_efficiency'] = "Performed with success"
-            
+
+            # Computing_burried_area_total
+            dic_param['spark_file'] = "buried_areas.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            spark_command += " "
+            spark_command += str(data['probe'])
+            spark_command += " "
+            spark_command += str(data['ndots'])
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['computing_burried_area_total'] = "Performed with success"
+
         return mens_res_vs_ana
 
 api.add_resource(PrepareLibrary, '/preparelibrary/<string:ligandlib>')
 api.add_resource(PrepareReceptor, '/preparereceptor/<string:receptor>')
 api.add_resource(VirtualScreening, '/vs/<string:vsname>')
-api.add_resource(VirtualScreeningAnalysis, '/vsana/<string:vsname>')
+api.add_resource(VirtualScreeningAnalysis,'/vsana/<string:vsname>/<float:probe>/<int:ndots>')
 
 if __name__ == '__main__':
     app.run(debug=True)
