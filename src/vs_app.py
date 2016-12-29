@@ -137,9 +137,19 @@ class VirtualScreeningAnalysis(Resource):
         required=True,
         help="This field cannot be left blank!"
     )
+    parser.add_argument('distanceCutoff',
+        type=float,
+        required=True,
+        help="This field cannot be left blank!"
+    )
+    parser.add_argument('angleCutoff',
+        type=float,
+        required=True,
+        help="This field cannot be left blank!"
+    )
 
 #    @jwt_required()
-    def post(self, vsname, probe, ndots):
+    def post(self, vsname, probe, ndots, distanceCutoff, angleCutoff):
         data = VirtualScreeningAnalysis.parser.parse_args()
         # Dictionary that contains all mensagens
         mens_res_vs_ana = {}
@@ -200,12 +210,52 @@ class VirtualScreeningAnalysis(Resource):
             run_command(command)
             mens_res_vs_ana['computing_burried_area_total'] = "Performed with success"
 
+            # Computing burried area of receptor and all residues
+            dic_param['spark_file'] = "buried_area_receptor.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['computing_burried_area_of_receptor_and_all_residues'] = "Performed with success"
+
+            # Computing burried are of ligand
+            dic_param['spark_file'] = "buried_area_ligand.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            spark_command += " "
+            spark_command += str(data['probe'])
+            spark_command += " "
+            spark_command += str(data['ndots'])
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['computing_burried_area_of_ligand'] = "Performed with success"
+
+            # Hydrogen bond
+            dic_param['spark_file'] = "hydrogen_bond.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            spark_command += " "
+            spark_command += str(data['distanceCutoff'])
+            spark_command += " "
+            spark_command += str(data['angleCutoff'])
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['hydrogen_bond'] = "Performed with success"
+
+            # Full data analysis
+            dic_param['spark_file'] = "vs_full_data_analysis.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['full_data_analysis'] = "Performed with success"
+
         return mens_res_vs_ana
 
 api.add_resource(PrepareLibrary, '/preparelibrary/<string:ligandlib>')
 api.add_resource(PrepareReceptor, '/preparereceptor/<string:receptor>')
 api.add_resource(VirtualScreening, '/vs/<string:vsname>')
-api.add_resource(VirtualScreeningAnalysis,'/vsana/<string:vsname>/<float:probe>/<int:ndots>')
+api.add_resource(VirtualScreeningAnalysis,'/vsana/<string:vsname>/<float:probe>/<int:ndots>/<float:distanceCutoff>/<float:angleCutoff>')
 
 if __name__ == '__main__':
     app.run(debug=True)

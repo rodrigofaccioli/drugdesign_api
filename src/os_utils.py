@@ -1,7 +1,6 @@
 import os
 
 def run_command(command=None):
-    print command
     if command == None:
         raise("command is empty")
     os.system(command)
