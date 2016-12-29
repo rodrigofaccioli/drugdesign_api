@@ -108,6 +108,17 @@ class VirtualScreening(Resource):
         run_command(command)
         mens_res_vs['prepare_dock_lis'] = "It was performed with success"
 
+        #Perform Virtual screening
+        dic_param['spark_file'] = "vina_docking.py"
+        chdir = get_command_chdir(dic_param)
+        spark_command = get_spark_command(dic_param)
+        spark_command += " "
+        path_file_docking_list = join_directory(dic_param['path_execution'], "docking_list.txt")
+        spark_command +=  path_file_docking_list #sys.argv[1] required by prepare_vina_docking.py
+        command = join_2_commands_to_run(chdir, spark_command)
+        run_command(command)
+        mens_res_vs['perform_vs'] = "It was performed with success"
+
         return mens_res_vs
 
 api.add_resource(PrepareLibrary, '/preparelibrary/<string:ligandlib>')
