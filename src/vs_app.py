@@ -20,8 +20,7 @@ dic_param['path_execution'] = config.get('DRUGDESIGN_API', 'path_execution')
 dic_param['spark_submit'] = config.get('DRUGDESIGN_API', 'spark_submit')
 dic_param['receptor_repository'] = config.get('DRUGDESIGN_API', 'receptor_repository')
 dic_param['ligand_repository'] = config.get('DRUGDESIGN_API', 'ligand_repository')
-
-
+dic_param['sufix_dir_for_vs_user'] = config.get('DRUGDESIGN_API', 'sufix_dir_for_vs_user')
 
 class PrepareLibrary(Resource):
     parser = reqparse.RequestParser()
@@ -121,9 +120,54 @@ class VirtualScreening(Resource):
 
         return mens_res_vs
 
+class VirtualScreeningAnalysis(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument('vsname',
+        type=str,
+        required=True,
+        help="This field cannot be left blank!"
+    )
+
+#    @jwt_required()
+    def post(self, vsname):
+        data = VirtualScreeningAnalysis.parser.parse_args()
+        # Dictionary that contains all mensagens
+        mens_res_vs_ana = {}
+        mens_res_vs_ana['error_mes_vs_ana'] = "None"
+        mens_res_vs_ana['create_file_for_analysis'] = "Not Performed"
+        mens_res_vs_ana['prepare_files_for_analysis'] = "Not Performed"
+        mens_res_vs_ana['ligand_efficiency'] = "Not Performed"
+        mens_res_vs_ana['computing_burried_area_total'] = "Not Performed"
+        mens_res_vs_ana['computing_burried_area_of_receptor_and_all_residues'] = "Not Performed"
+        mens_res_vs_ana['computing_burried_area_of_ligand'] = "Not Performed"
+        mens_res_vs_ana['hydrogen_bond'] = "Not Performed"
+        mens_res_vs_ana['full_data_analysis'] = "Not Performed"
+
+        #Checking directory of Virtual Screening that must be Performed
+        dir_for_vs_analysis = join_directory(dic_param['path_execution'],dic_param['sufix_dir_for_vs_user'])
+        dir_for_vs_analysis = join_directory(dir_for_vs_analysis, data['vsname'])
+
+        if check_diretory_exists(dir_for_vs_analysis) == False:
+            mens = dir_for_vs_analysis
+            mens = " "
+            mens += "VS for analysis directory not found"
+            mens_res_vs_ana['error_mes_vs_ana'] = mens
+        else: #able for performing analysis        
+            # Create file for analysis
+            dic_param['spark_file'] = "create_file_for_analysis.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['create_file_for_analysis'] = "Performed with success"
+
+
+        return mens_res_vs_ana
+
 api.add_resource(PrepareLibrary, '/preparelibrary/<string:ligandlib>')
 api.add_resource(PrepareReceptor, '/preparereceptor/<string:receptor>')
 api.add_resource(VirtualScreening, '/vs/<string:vsname>')
+api.add_resource(VirtualScreeningAnalysis, '/vsana/<string:vsname>')
 
 if __name__ == '__main__':
     app.run(debug=True)
