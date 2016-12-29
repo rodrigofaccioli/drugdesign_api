@@ -152,7 +152,8 @@ class VirtualScreeningAnalysis(Resource):
             mens = " "
             mens += "VS for analysis directory not found"
             mens_res_vs_ana['error_mes_vs_ana'] = mens
-        else: #able for performing analysis        
+        else: #able for performing analysis
+
             # Create file for analysis
             dic_param['spark_file'] = "create_file_for_analysis.py"
             chdir = get_command_chdir(dic_param)
@@ -161,7 +162,22 @@ class VirtualScreeningAnalysis(Resource):
             run_command(command)
             mens_res_vs_ana['create_file_for_analysis'] = "Performed with success"
 
+            # Prepare files for analysis
+            dic_param['spark_file'] = "prepare_files_for_analysis.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['prepare_files_for_analysis'] = "Performed with success"
 
+            # Ligand efficiency
+            dic_param['spark_file'] = "ligand_efficiency.py"
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_res_vs_ana['ligand_efficiency'] = "Performed with success"
+            
         return mens_res_vs_ana
 
 api.add_resource(PrepareLibrary, '/preparelibrary/<string:ligandlib>')

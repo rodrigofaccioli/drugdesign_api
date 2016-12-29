@@ -1,0 +1,34 @@
+REMARK   4 XXXX COMPLIES WITH FORMAT V. 2.0
+ATOM      1  C   LIG d   1      74.247  73.209  45.737  0.00  0.00      ns3p C  
+ATOM      2  C   LIG d   1      75.393  74.253  45.443  0.00  0.00      ns3p C  
+ATOM      3  C   LIG d   1      76.745  73.517  45.747  0.00  0.00      ns3p C  
+ATOM      4  O   LIG d   1      76.772  73.324  47.165  0.00  0.00      ns3p O  
+ATOM      5  C   LIG d   1      75.688  72.670  47.682  0.00  0.00      ns3p C  
+ATOM      6  C   LIG d   1      74.493  72.534  47.082  0.00  0.00      ns3p C  
+ATOM      7  O   LIG d   1      77.018  72.305  45.011  0.00  0.00      ns3p O  
+ATOM      8  C   LIG d   1      78.046  72.477  43.985  0.00  0.00      ns3p C  
+ATOM      9  O   LIG d   1      78.621  71.175  43.670  0.00  0.00      ns3p O  
+ATOM     10  C   LIG d   1      79.766  70.778  44.455  0.00  0.00      ns3p C  
+ATOM     11  C   LIG d   1      79.833  71.561  45.771  0.00  0.00      ns3p C  
+ATOM     12  C   LIG d   1      80.129  73.013  45.376  0.00  0.00      ns3p C  
+ATOM     13  O   LIG d   1      80.863  71.124  46.659  0.00  0.00      ns3p O  
+ATOM     14  C   LIG d   1      79.129  73.539  44.339  0.00  0.00      ns3p C  
+ATOM     15  O   LIG d   1      80.148  73.853  46.535  0.00  0.00      ns3p O  
+ATOM     16  O   LIG d   1      79.833  73.955  43.155  0.00  0.00      ns3p O  
+ATOM     17  C   LIG d   1      79.743  69.255  44.682  0.00  0.00      ns3p C  
+ATOM     18  O   LIG d   1      78.460  68.780  45.090  0.00  0.00      ns3p O  
+ATOM     19  C   LIG d   1      75.402  75.580  46.313  0.00  0.00      ns3p C  
+ATOM     20  C   LIG d   1      74.016  75.980  46.768  0.00  0.00      ns3p C  
+ATOM     21  O   LIG d   1      75.833  76.688  45.482  0.00  0.00      ns3p O  
+ATOM     22  C   LIG d   1      76.630  77.675  46.014  0.00  0.00      ns3p C  
+ATOM     23  C   LIG d   1      77.957  77.015  46.323  0.00  0.00      ns3p C  
+ATOM     24  O   LIG d   1      76.277  78.753  46.386  0.00  0.00      ns3p O  
+ATOM     25  C   LIG d   1      72.815  73.437  45.144  0.00  0.00      ns3p C  
+ATOM     26  C   LIG d   1      72.404  73.974  43.790  0.00  0.00      ns3p C  
+ATOM     27  O   LIG d   1      71.362  73.323  43.219  0.00  0.00      ns3p O  
+ATOM     28  O   LIG d   1      73.018  74.799  43.147  0.00  0.00      ns3p O  
+ATOM     29  C   LIG d   1      73.686  71.421  47.661  0.00  0.00      ns3p C  
+ATOM     30  O   LIG d   1      74.065  70.258  47.732  0.00  0.00      ns3p O  
+ATOM     31  O   LIG d   1      72.462  71.864  47.978  0.00  0.00      ns3p O  
+ATOM     32  C   LIG d   1      71.442  70.908  48.273  0.00  0.00      ns3p C  
+TER      33      LIG d   1 
