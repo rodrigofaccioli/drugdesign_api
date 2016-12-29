@@ -1,0 +1,7 @@
+6
+ns3pro_dm_0	NuBBE_109_obabel_3D	10	32
+ns3pro_dm_0	NuBBE_128_obabel_3D	2	23
+ns3pro_dm_0	NuBBE_102_obabel_3D	7	37
+ns3pro_dm_0	NuBBE_142_obabel_3D	7	44
+ns3pro_dm_0	NuBBE_127_obabel_3D	5	33
+ns3pro_dm_0	NuBBE_115_obabel_3D	12	77

@@ -30,3 +30,6 @@ def check_diretory_exists(dir_2_search):
 
 def join_directory(dir1, dir2):
     return os.path.join(dir1, dir2)
+
+def makedir(dir):
+    os.makedirs(dir)
