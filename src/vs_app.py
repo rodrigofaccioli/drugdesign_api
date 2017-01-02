@@ -35,17 +35,21 @@ class PrepareLibrary(Resource):
         data = PrepareLibrary.parser.parse_args()
         dic_param['spark_file'] = "prepare_ligand.py"
 
+        mens_ret = {}
+        mens_ret['error_code'] = "None"
+        mens_ret['lig_men'] = "Prepare Library was not performed"
+        mens_ret['libraryName'] = str(ligandlib)
+
         dir_ligand_repository_param = join_directory(dic_param['ligand_repository'] ,data['ligandlib'])
         if check_diretory_exists(dir_ligand_repository_param) == False:
-            mens_ret = "Ligand library needs to be uploaded"
+            mens_ret['error_code'] = "Ligand library needs to be uploaded"
+        else:
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_ret['lig_men'] = "Prepare Library was executed successfuly"
 
-        chdir = get_command_chdir(dic_param)
-        spark_command = get_spark_command(dic_param)
-        command = join_2_commands_to_run(chdir, spark_command)
-        run_command(command)
-        mens_ret = "Prepare ligand was executed successfuly"
-
-        mens_ret = {'lig_men': mens_ret}
         return mens_ret
 
 class PrepareReceptor(Resource):
