@@ -1,3 +1,4 @@
 *.pyc
 venv/
 test/api/virtual_screening/*.log
+__pycache__/
