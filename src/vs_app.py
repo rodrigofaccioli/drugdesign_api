@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 from flask_jwt import JWT, jwt_required, current_identity
+from flask_cors import CORS, cross_origin
 from os_utils import run_command, get_spark_command, get_command_chdir, join_2_commands_to_run, check_diretory_exists, join_directory, makedir
 
 
@@ -10,6 +11,7 @@ from os_utils import run_command, get_spark_command, get_command_chdir, join_2_c
 app = Flask(__name__)
 app.secret_key = 'mi4u_vs'
 api = Api(app)
+CORS(app)
 
 import ConfigParser as configparser
 config = configparser.ConfigParser()
@@ -262,4 +264,4 @@ api.add_resource(VirtualScreening, '/vs/<string:vsname>')
 api.add_resource(VirtualScreeningAnalysis,'/vsana/<string:vsname>/<float:probe>/<int:ndots>/<float:distanceCutoff>/<float:angleCutoff>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8080)
