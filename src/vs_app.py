@@ -66,18 +66,21 @@ class PrepareReceptor(Resource):
     def post(self, receptor):
         data = PrepareReceptor.parser.parse_args()
         dic_param['spark_file'] = "prepare_receptor.py"
+        mens_ret = {}
+        mens_ret['errorCode'] = "None"
+        mens_ret['recepMen'] = "Prepare Receptor was not performed"
+        mens_ret['receptorName'] = str(receptor)
 
         dir_repository_param = join_directory(dic_param['receptor_repository'] ,data['receptor'])
         if check_diretory_exists(dir_repository_param) == False:
-            mens_ret = "PDB Receptor(es) need to be uploaded"
-
-        chdir = get_command_chdir(dic_param)
-        spark_command = get_spark_command(dic_param)
-        command = join_2_commands_to_run(chdir, spark_command)
-        run_command(command)
-        mens_ret = "Prepare receptor was executed successfuly"
-
-        mens_ret = {'men_receptor': mens_ret}
+            mens_ret['errorCode'] = "PDB Receptor(es) need to be uploaded"
+        else:
+            chdir = get_command_chdir(dic_param)
+            spark_command = get_spark_command(dic_param)
+            command = join_2_commands_to_run(chdir, spark_command)
+            run_command(command)
+            mens_ret['recepMen'] = "Prepare receptor was executed successfuly"
+            
         return mens_ret
 
 class VirtualScreening(Resource):
