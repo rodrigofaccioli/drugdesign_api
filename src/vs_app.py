@@ -80,7 +80,7 @@ class PrepareReceptor(Resource):
             command = join_2_commands_to_run(chdir, spark_command)
             run_command(command)
             mens_ret['recepMen'] = "Prepare receptor was executed successfuly"
-            
+
         return mens_ret
 
 class VirtualScreening(Resource):
@@ -267,4 +267,4 @@ api.add_resource(VirtualScreening, '/vs/<string:vsname>')
 api.add_resource(VirtualScreeningAnalysis,'/vsana/<string:vsname>/<float:probe>/<int:ndots>/<float:distanceCutoff>/<float:angleCutoff>')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=5000)
