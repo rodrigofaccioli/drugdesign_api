@@ -2,3 +2,4 @@
 venv/
 test/api/virtual_screening/*.log
 __pycache__/
+.DS_Store
