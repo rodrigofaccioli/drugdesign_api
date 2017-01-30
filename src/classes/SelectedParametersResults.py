@@ -8,17 +8,18 @@ class SelectedParametersResults(VS):
         self.option = ""
 
     def setResidues(self, listRes):
-        self.res = listRes
+        for res in listRes:
+            self.setAddResidue(str(res))
 
     def setAddResidue(self, res):
         self.res.append(res)
 
     def setRange(self, min, max):
-        self.range.append(min)
-        self.range.append(max)
+        self.range.append(float(min))
+        self.range.append(float(max))
 
     def setOption(self, op):
-        self.option = op
+        self.option = str(op)
 
     def getResidues(self):
         return self.getResidues()
@@ -30,10 +31,5 @@ class SelectedParametersResults(VS):
         return self.option
 
     def printAll(self):
-        Allres = ""
-        for item in self.res:
-            if Allres.strip():
-                Allres = Allres + " , "
-            Allres = Allres + str(item)
-        men = "ID: " + str(self.VS.id) + " Residues: " + Allres + " Range: " + str(self.range) + " Option: " + str(self.option)
+        men = "ID: " + str(self.VS.id) + " Residues: " + str(self.res) + " Range: " + str(self.range) + " Option: " + str(self.option)
         print men
