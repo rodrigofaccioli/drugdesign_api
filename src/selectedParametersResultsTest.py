@@ -6,12 +6,12 @@ with open("selectedParametersResults.json") as json_file:
 
     # Energy
     residues_energy = data["energy"]["residues"]
-    selectedResiduesEnergy = SelectedParametersResults()
+    selectedResiduesEnergy = SelectedParametersResults("Demo")
     selectedResiduesEnergy.setResidues(residues_energy)
     selectedResiduesEnergy.printAll()
 
     # Hydrogen
     residues_hydrogen = data["hydrogen"]["residues"]
-    selectedResiduesHydrogen = SelectedParametersResults()
+    selectedResiduesHydrogen = SelectedParametersResults("Demo")
     selectedResiduesHydrogen.setResidues(residues_hydrogen)
     selectedResiduesHydrogen.printAll()

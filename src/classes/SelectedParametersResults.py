@@ -1,7 +1,8 @@
 from VS import VS
 
 class SelectedParametersResults(VS):
-    def __init__(self):
+    def __init__(self, id):
+        self.VS = VS(id)
         self.res = []
         self.range = []
         self.option = ""
@@ -19,9 +20,6 @@ class SelectedParametersResults(VS):
     def setOption(self, op):
         self.option = op
 
-    def setIdVS(self, id):
-        self.idVS = id
-
     def getResidues(self):
         return self.getResidues()
 
@@ -32,9 +30,10 @@ class SelectedParametersResults(VS):
         return self.option
 
     def printAll(self):
-        men = ""
+        Allres = ""
         for item in self.res:
-            if men.strip():
-                men = men + " , "
-            men = men + str(item)
+            if Allres.strip():
+                Allres = Allres + " , "
+            Allres = Allres + str(item)
+        men = "ID: " + str(self.VS.id) + " Residues: " + Allres + " Range: " + str(self.range) + " Option: " + str(self.option)
         print men
