@@ -1,6 +1,10 @@
-class ResultResidues():
+from VS import VS
+
+class SelectedParametersResults(VS):
     def __init__(self):
         self.res = []
+        self.range = []
+        self.option = ""
 
     def setResidues(self, listRes):
         self.res = listRes
@@ -8,8 +12,24 @@ class ResultResidues():
     def setAddResidue(self, res):
         self.res.append(res)
 
+    def setRange(self, min, max):
+        self.range.append(min)
+        self.range.append(max)
+
+    def setOption(self, op):
+        self.option = op
+
+    def setIdVS(self, id):
+        self.idVS = id
+
     def getResidues(self):
         return self.getResidues()
+
+    def getRange():
+        return self.range
+
+    def getOption(self):
+        return self.option
 
     def printAll(self):
         men = ""

@@ -1,6 +1,6 @@
 import json
 from classes.ResultMolecule import ResultMolecule
-from classes.ResultResidues import ResultResidues
+from classes.SelectedParametersResults import SelectedParametersResults
 
 with open("result.json") as json_file:
     data = json.load(json_file)
@@ -19,9 +19,9 @@ with open("result.json") as json_file:
 
     # Residues
     residues_energy = data["energy"]["residues"]
-    resultResiduesEnergy = ResultResidues()
-    resultResiduesEnergy.setResidues(residues_energy)
-    resultResiduesEnergy.printAll()
+    SelectedParametersResultsEnergy = SelectedParametersResults()
+    SelectedParametersResultsEnergy.setResidues(residues_energy)
+    SelectedParametersResultsEnergy.printAll()
 # -----------------------------------------------------
 
     # ---------- Hydrogen -------------------------------
@@ -38,7 +38,7 @@ with open("result.json") as json_file:
 
     # Residues
     residues_hydrogen = data["hydrogen"]["residues"]
-    resultResiduesHydrogen = ResultResidues()
-    resultResiduesHydrogen.setResidues(residues_hydrogen)
-    resultResiduesHydrogen.printAll()
+    SelectedParametersResultsHydrogen = SelectedParametersResults()
+    SelectedParametersResultsHydrogen.setResidues(residues_hydrogen)
+    SelectedParametersResultsHydrogen.printAll()
 # -----------------------------------------------------
