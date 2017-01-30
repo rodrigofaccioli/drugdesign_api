@@ -2,3 +2,6 @@ In this directory contains commands to test JSON files
 
 Run to test result.json
 python ../../src/resultTest.py
+
+Run to test selectedResidues.json
+python ../../src/selectedResiduesTest.py

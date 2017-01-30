@@ -1,0 +1,14 @@
+{
+	"energy": {
+		"residues": [
+			"res-1",
+			"res-2"
+		]
+	},
+	"hydrogen": {
+		"residues": [
+			"res-10",
+			"res-20"
+		]
+	}
+}
