@@ -1,0 +1,4 @@
+In this directory contains commands to test JSON files
+
+Run to test result.json
+python ../../src/resultTest.py

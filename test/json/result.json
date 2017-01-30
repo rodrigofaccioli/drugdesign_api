@@ -1,0 +1,46 @@
+{
+	"energy": {
+		"residues": [
+			"res-1",
+			"res-2"
+		],
+		"results": [{
+			"molecule": "EnergyMol1",
+			"value": "1",
+			"image1": "http://google.com/image1.jpg",
+			"image2": "http://google.com/image2.jpg"
+		}, {
+			"molecule": "EnergyMol2",
+			"value": "2",
+			"image1": "http://google.com/image1.jpg",
+			"image2": "http://google.com/image2.jpg"
+		}, {
+			"molecule": "EnergyMol3",
+			"value": "3",
+			"image1": "http://google.com/image1.jpg",
+			"image2": "http://google.com/image2.jpg"
+		}]
+	},
+	"hydrogen": {
+		"residues": [
+			"res-10",
+			"res-20"
+		],
+		"results": [{
+			"molecule": "HydrogenMol1",
+			"value": "1",
+			"image1": "http://google.com/image1.jpg",
+			"image2": "http://google.com/image2.jpg"
+		}, {
+			"molecule": "HydrogenMol2",
+			"value": "2",
+			"image1": "http://google.com/image1.jpg",
+			"image2": "http://google.com/image2.jpg"
+		}, {
+			"molecule": "HydrogenMol3",
+			"value": "3",
+			"image1": "http://google.com/image1.jpg",
+			"image2": "http://google.com/image2.jpg"
+		}]
+	}
+}
