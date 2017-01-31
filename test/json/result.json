@@ -43,6 +43,7 @@
 		],
 		"rangeMin": "3.0",
 		"rangeMax": 	"4.5",
+		"totalResults" : "3",
 		"results": [{
 			"molecule": "HydrogenMol1",
 			"value": "1",
