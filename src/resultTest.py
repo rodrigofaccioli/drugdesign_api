@@ -27,5 +27,29 @@ with open("result.json") as json_file:
     #print all molecules
     for resultMoleculeEnergy in allResultMoleculeEnergy:
         resultMoleculeEnergy.printAll()
+# -----------------------------------------------------
 
+
+    # ---------- Hydrogen -------------------------------
+    results_hydrogen = data["hydrogen"]["results"]
+    vs_id_hydrogen = data["hydrogen"]["vsId"]
+    residues_hydrogen = data["hydrogen"]["residues"]
+    range_hydrogen_min = data["hydrogen"]["rangeMin"]
+    range_hydrogen_max = data["hydrogen"]["rangeMax"]
+
+    selectedParametersHydrogen = SelectedParametersResults(vs_id_hydrogen)
+    selectedParametersHydrogen.setResidues(residues_hydrogen)
+    selectedParametersHydrogen.setRange(range_hydrogen_min, range_hydrogen_max)
+    selectedParametersHydrogen.setOption("hydrogen")
+    selectedParametersHydrogen.printAll()
+
+    # Molecules
+    allResultMoleculeHydrogen = []
+    for dic in results_hydrogen:
+        resultMoleculeHydrogen = ResultMolecule(vs_id_hydrogen)
+        resultMoleculeHydrogen.dic2obj(dic)
+        allResultMoleculeHydrogen.append(resultMoleculeHydrogen)
+    #print all molecules
+    for resultMoleculeHydrogen in allResultMoleculeHydrogen:
+        resultMoleculeHydrogen.printAll()
 # -----------------------------------------------------
