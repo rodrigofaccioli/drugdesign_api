@@ -30,6 +30,8 @@ class SelectedParametersResults(VS):
     def getOption(self):
         return self.option
 
+    def buildMessage(self):
+        return "ID: " + str(self.VS.id) + " Residues: " + str(self.res) + " Range: " + str(self.range) + " Option: " + str(self.option)
+
     def printAll(self):
-        men = "ID: " + str(self.VS.id) + " Residues: " + str(self.res) + " Range: " + str(self.range) + " Option: " + str(self.option)
-        print men
+        print self.buildMessage()

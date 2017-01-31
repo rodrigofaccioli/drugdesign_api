@@ -5,10 +5,10 @@ with open("selectedParametersResults.json") as json_file:
     data = json.load(json_file)
 
     # Energy
-    vs_id_energy = data["energy"]["vs_id"]
+    vs_id_energy = data["energy"]["vsId"]
     residues_energy = data["energy"]["residues"]
-    range_energy_min = data["energy"]["range_min"]
-    range_energy_max = data["energy"]["range_max"]
+    range_energy_min = data["energy"]["rangeMin"]
+    range_energy_max = data["energy"]["rangeMax"]
 
     selectedResiduesEnergy = SelectedParametersResults(vs_id_energy)
     selectedResiduesEnergy.setResidues(residues_energy)
@@ -17,10 +17,10 @@ with open("selectedParametersResults.json") as json_file:
     selectedResiduesEnergy.printAll()
 
     # Hydrogen
-    vs_id_hydrogen = data["hydrogen"]["vs_id"]
+    vs_id_hydrogen = data["hydrogen"]["vsId"]
     residues_hydrogen = data["hydrogen"]["residues"]
-    range_hydrogen_min = data["hydrogen"]["range_min"]
-    range_hydrogen_max = data["hydrogen"]["range_max"]
+    range_hydrogen_min = data["hydrogen"]["rangeMin"]
+    range_hydrogen_max = data["hydrogen"]["rangeMax"]
 
     selectedResiduesHydrogen = SelectedParametersResults(vs_id_hydrogen)
     selectedResiduesHydrogen.setResidues(residues_hydrogen)

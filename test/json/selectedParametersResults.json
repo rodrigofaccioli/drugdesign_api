@@ -1,21 +1,21 @@
 {
 	"energy": {
-		"vs_id" : "Demo",
+		"vsId" : "Demo",
 		"residues": [
 			"res-1",
 			"res-2"
 		],
-		"range_min": "-8.5",
-		"range_max": 	"0.00"
+		"rangeMin": "-8.5",
+		"rangeMax": 	"0.00"
 	},
 	"hydrogen": {
-		"vs_id" : "Demo",
+		"vsId" : "Demo",
 		"residues": [
 			"res-10",
 			"res-20"
 		],
-		"range_min": "3.0",
-		"range_max": 	"4.5"
+		"rangeMin": "3.0",
+		"rangeMax": 	"4.5"
 	}
 
 }
