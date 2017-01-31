@@ -1,9 +1,12 @@
 {
 	"energy": {
+		"vsId" : "Demo",
 		"residues": [
 			"res-1",
 			"res-2"
 		],
+		"rangeMin": "-8.5",
+		"rangeMax": 	"0.00",
 		"results": [{
 			"molecule": "EnergyMol1",
 			"value": "1",
@@ -22,10 +25,13 @@
 		}]
 	},
 	"hydrogen": {
+		"vsId" : "Demo",
 		"residues": [
 			"res-10",
 			"res-20"
 		],
+		"rangeMin": "3.0",
+		"rangeMax": 	"4.5",
 		"results": [{
 			"molecule": "HydrogenMol1",
 			"value": "1",

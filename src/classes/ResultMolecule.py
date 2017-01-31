@@ -1,11 +1,12 @@
+from VS import VS
 
-
-class ResultMolecule():
-    def __init__(self):
-      self.molecule = ""
-      self.value = 0
-      self.image1 = ""
-      self.image2 = ""
+class ResultMolecule(VS):
+    def __init__(self, id):
+        self.VS = VS(id)
+        self.molecule = ""
+        self.value = 0
+        self.image1 = ""
+        self.image2 = ""
 
     def setMolecule(self, mol):
         self.molecule = mol
@@ -38,5 +39,5 @@ class ResultMolecule():
         self.setImage2( dic["image2"] )
 
     def printAll(self):
-        men = "Molecule: " + str( self.getMolecule() )+ " Value: "+ str( self.getValue() ) + " image1: "+ str( self.getImage1() ) + " image2: "+ str( self.getImage2() )
+        men = "ID: " + str(self.VS.id) + "Molecule: " + str( self.getMolecule() )+ " Value: "+ str( self.getValue() ) + " image1: "+ str( self.getImage1() ) + " image2: "+ str( self.getImage2() )
         print men

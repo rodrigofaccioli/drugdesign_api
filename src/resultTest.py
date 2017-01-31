@@ -6,39 +6,26 @@ with open("result.json") as json_file:
     data = json.load(json_file)
 
     # ---------- Energy -------------------------------
-    # Molecules
     results_energy = data["energy"]["results"]
+    vs_id_energy = data["energy"]["vsId"]
+    residues_energy = data["energy"]["residues"]
+    range_energy_min = data["energy"]["rangeMin"]
+    range_energy_max = data["energy"]["rangeMax"]
+
+    selectedParametersEnergy = SelectedParametersResults(vs_id_energy)
+    selectedParametersEnergy.setResidues(residues_energy)
+    selectedParametersEnergy.setRange(range_energy_min, range_energy_max)
+    selectedParametersEnergy.setOption("energy")
+    selectedParametersEnergy.printAll()
+
+    # Molecules
     allResultMoleculeEnergy = []
     for dic in results_energy:
-        resultMoleculeEnergy = ResultMolecule()
+        resultMoleculeEnergy = ResultMolecule(vs_id_energy)
         resultMoleculeEnergy.dic2obj(dic)
         allResultMoleculeEnergy.append(resultMoleculeEnergy)
     #print all molecules
     for resultMoleculeEnergy in allResultMoleculeEnergy:
         resultMoleculeEnergy.printAll()
 
-    # Residues
-    residues_energy = data["energy"]["residues"]
-    SelectedParametersResultsEnergy = SelectedParametersResults()
-    SelectedParametersResultsEnergy.setResidues(residues_energy)
-    SelectedParametersResultsEnergy.printAll()
-# -----------------------------------------------------
-
-    # ---------- Hydrogen -------------------------------
-    # Molecules
-    results_hydrogen = data["hydrogen"]["results"]
-    allResultMoleculeHydrogen = []
-    for dic in results_hydrogen:
-        resultMoleculeHydrogen = ResultMolecule()
-        resultMoleculeHydrogen.dic2obj(dic)
-        allResultMoleculeHydrogen.append(resultMoleculeHydrogen)
-    #print all molecules
-    for resultMoleculeHydrogen in allResultMoleculeHydrogen:
-        resultMoleculeHydrogen.printAll()
-
-    # Residues
-    residues_hydrogen = data["hydrogen"]["residues"]
-    SelectedParametersResultsHydrogen = SelectedParametersResults()
-    SelectedParametersResultsHydrogen.setResidues(residues_hydrogen)
-    SelectedParametersResultsHydrogen.printAll()
 # -----------------------------------------------------
